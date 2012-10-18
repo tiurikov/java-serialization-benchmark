@@ -20,6 +20,14 @@
                 <groupId>org.apache.thrift.tools</groupId>
                 <artifactId>maven-thrift-plugin</artifactId>
                 <version>0.1.10</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
