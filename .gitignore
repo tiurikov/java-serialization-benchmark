@@ -1,1 +1,10 @@
-/target/
+classes/*
+lib/*
+target/*
+*.jar
+.lein*
+*sublime*
+*.pyc
+*.pyo
+.DS_Store
+*.iml
