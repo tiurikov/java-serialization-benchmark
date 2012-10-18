@@ -1,10 +1,10 @@
-package com.mycompany.xsteramtest;
+package com.mycompany.sertest;
 
-import com.mycompany.xsteramtest.dto.SimpleDataObject;
+import com.mycompany.sertest.dto.SimpleDataObject;
 import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.Test;
 
-public class AppTest
+public class XStreamTest
 {
     public static final int DUMMY_ID = 12;
     public static final int DUMMY_PARENT_ID = 34;
