@@ -14,22 +14,19 @@ public class ThriftTest
 
 
     @Test
-    public void thrift10000()
+    public void thrift100000()
     {
         final long time = System.currentTimeMillis();
 
         final SimpleThriftStruct simpleInStruct = new SimpleThriftStruct(DUMMY_PARENT_ID, "message", DUMMY_ID);
         final TSerializer _serializer = new TSerializer(new TBinaryProtocol.Factory());
         final TDeserializer _deserializer = new TDeserializer(new TBinaryProtocol.Factory());
-        SimpleThriftStruct simpleOutStruct = new SimpleThriftStruct();
 
-
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 100000; i++) {
 
             try {
                 final byte[] _bytes = _serializer.serialize(simpleInStruct);
-                _deserializer.deserialize(simpleOutStruct, _bytes);
-
+                _deserializer.deserialize(new SimpleThriftStruct(), _bytes);
             } catch (TException e) {
                 e.printStackTrace();
             }

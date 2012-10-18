@@ -19,10 +19,9 @@ public class GsonTest
     {
         final long time = System.currentTimeMillis();
         final Gson gson = new Gson();
-
         final SimpleDataObject simpleDataObject = new SimpleDataObject("message", DUMMY_ID, DUMMY_PARENT_ID);
 
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 100000; i++) {
             final String json = gson.toJson(simpleDataObject);
             gson.fromJson(json, SimpleDataObject.class);
         }

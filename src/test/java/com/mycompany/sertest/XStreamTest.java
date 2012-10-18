@@ -11,15 +11,13 @@ public class XStreamTest
 
 
     @Test
-    public void xstream10000()
+    public void xstream1000000()
     {
         final long time = System.currentTimeMillis();
         final XStream stream = new XStream();
         final SimpleDataObject simpleDataObject = new SimpleDataObject("message", DUMMY_ID, DUMMY_PARENT_ID);
-
         
-        
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 100000; i++) {
             final String xml = stream.toXML(simpleDataObject);
             stream.fromXML(xml);
         }
