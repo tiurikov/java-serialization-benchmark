@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.sertest.dto;
 
 /**
@@ -11,7 +7,10 @@ package com.mycompany.sertest.dto;
 public class SimpleDataObject extends SimpleDataObjectParent
 {
     private long someId;
+
     private String message;
+
+    private String[] data;
 
 
     public SimpleDataObject()
@@ -31,6 +30,15 @@ public class SimpleDataObject extends SimpleDataObjectParent
         super(parentId);
         this.message = message;
         this.someId = someId;
+    }
+
+
+    public SimpleDataObject(long someId, String message, String[] data, long parentId)
+    {
+        super(parentId);
+        this.someId = someId;
+        this.message = message;
+        this.data = data;
     }
 
 

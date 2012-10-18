@@ -7,18 +7,14 @@ import org.apache.thrift.TSerializer;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.testng.annotations.Test;
 
-public class ThriftTest
+public class ThriftTest extends PerformanceTestBase
 {
-    public static final int DUMMY_ID = 12;
-    public static final int DUMMY_PARENT_ID = 34;
-
-
     @Test
-    public void thrift100000()
+    public void thrift100000TransformationsRun()
     {
         final long time = System.currentTimeMillis();
 
-        final SimpleThriftStruct simpleInStruct = new SimpleThriftStruct(DUMMY_PARENT_ID, "message", DUMMY_ID);
+        final SimpleThriftStruct simpleInStruct = new SimpleThriftStruct(DUMMY_ID, "message", DUMMY_ID);
         final TSerializer _serializer = new TSerializer(new TBinaryProtocol.Factory());
         final TDeserializer _deserializer = new TDeserializer(new TBinaryProtocol.Factory());
 
