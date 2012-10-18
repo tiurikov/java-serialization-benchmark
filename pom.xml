@@ -12,67 +12,14 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <thrift.executable>thrift</thrift.executable>
-        <thrift.interface>${basedir}/src/thrift/thrift_test.thrift</thrift.interface>
-        <gendir.target>${basedir}/target/generated-sources</gendir.target>
-        <gendir.namespace>com/mycompany/sertest/thrift</gendir.namespace>
-        <gendir.src>${basedir}/src/jvm/${gendir.namespace}</gendir.src>
     </properties>
 
     <build>
-        <sourceDirectory>src/jvm</sourceDirectory>
-        <testSourceDirectory>test/jvm</testSourceDirectory>
-        <resources>
-            <resource>
-                <filtering>true</filtering>
-                <directory>${basedir}/src/jvm/ru/megalabs/kyc/log4j</directory>
-            </resource>
-        </resources>
         <plugins>
             <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.6</version>
-                <configuration></configuration>
-                <executions>
-                    <execution>
-                        <id>generate-sources</id>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <target>
-                                <echo>
-                                    create (or clear) output directory for generated files
-                                </echo>
-                                <mkdir dir="${gendir.target}" />
-                                <delete>
-                                    <fileset dir="${gendir.target}" includes="**/*" />
-                                </delete>
-                                <echo>
-                                    generate java source files from ${thrift.interface}
-                                </echo>
-                                <exec executable="${thrift.executable}">
-                                    <arg value="--gen" />
-                                    <arg value="java:beans,hashcode,nocamel"/>
-                                    <arg value="-o"/>
-                                    <arg value="${gendir.target}"/>
-                                    <arg value="${thrift.interface}"/>
-                                </exec>
-                                <echo>
-                                    copy generated files to ${gendir.src}
-                                </echo>
-                                <mkdir dir="${gendir.src}" />
-                                <delete>
-                                    <fileset dir="${gendir.src}" includes="**/*"/>
-                                </delete>
-                                <copy todir="${gendir.src}">
-                                    <fileset dir="target/generated-sources/gen-javabean/${gendir.namespace}"/>
-                                </copy>
-                            </target>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>org.apache.thrift.tools</groupId>
+                <artifactId>maven-thrift-plugin</artifactId>
+                <version>0.1.10</version>
             </plugin>
         </plugins>
     </build>
@@ -94,16 +41,24 @@
             <artifactId>libthrift</artifactId>
             <version>0.8.0</version>
         </dependency>
-
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.16</version>
-        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.5.8</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.2.2</version>
+        </dependency>
     </dependencies>
+    
+    <pluginRepositories>
+        <pluginRepository>
+            <id>dtrotts</id>
+            <name>Repository for maven thrift plugin</name>
+            <url>http://maven.davidtrott.com/repository</url>
+            <layout>default</layout>
+        </pluginRepository>
+    </pluginRepositories>
 </project>

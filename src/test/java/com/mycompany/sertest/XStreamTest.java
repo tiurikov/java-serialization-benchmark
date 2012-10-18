@@ -17,6 +17,8 @@ public class XStreamTest
         final XStream stream = new XStream();
         final SimpleDataObject simpleDataObject = new SimpleDataObject("message", DUMMY_ID, DUMMY_PARENT_ID);
 
+        
+        
         for (int i = 0; i < 10000; i++) {
             final String xml = stream.toXML(simpleDataObject);
             stream.fromXML(xml);

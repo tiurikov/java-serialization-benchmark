@@ -18,7 +18,7 @@ public class ThriftTest
     {
         final long time = System.currentTimeMillis();
 
-        final SimpleThriftStruct simpleInStruct = new SimpleThriftStruct(DUMMY_PARENT_ID,"message",DUMMY_ID);
+        final SimpleThriftStruct simpleInStruct = new SimpleThriftStruct(DUMMY_PARENT_ID, "message", DUMMY_ID);
         final TSerializer _serializer = new TSerializer(new TBinaryProtocol.Factory());
         final TDeserializer _deserializer = new TDeserializer(new TBinaryProtocol.Factory());
         SimpleThriftStruct simpleOutStruct = new SimpleThriftStruct();
@@ -28,7 +28,7 @@ public class ThriftTest
 
             try {
                 final byte[] _bytes = _serializer.serialize(simpleInStruct);
-                _deserializer.deserialize(simpleOutStruct,_bytes);
+                _deserializer.deserialize(simpleOutStruct, _bytes);
 
             } catch (TException e) {
                 e.printStackTrace();
