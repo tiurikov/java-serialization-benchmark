@@ -11,11 +11,11 @@ public class XStreamTest extends PerformanceTestBase
         final long time = System.currentTimeMillis();
         final XStream stream = new XStream();
 
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < EXECUTION_COUNT_100000; i++) {
             final String xml = stream.toXML(OBJECT_TO_TRANSFORM);
             stream.fromXML(xml);
         }
 
-        System.out.println("XStream-10000 Time = " + (System.currentTimeMillis() - time));
+        System.out.println("XStream-100000 Time = " + (System.currentTimeMillis() - time));
     }
 }

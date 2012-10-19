@@ -17,4 +17,5 @@ public abstract class PerformanceTestBase
     protected static final SimpleDataObject OBJECT_TO_TRANSFORM =
             new SimpleDataObject(DUMMY_ID, DUMMY_MESSAGE, DUMMY_DATA, DUMMY_ID);
 
+    protected static final int EXECUTION_COUNT_100000 = 100000;
 }

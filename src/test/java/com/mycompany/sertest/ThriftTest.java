@@ -18,7 +18,7 @@ public class ThriftTest extends PerformanceTestBase
         final TSerializer _serializer = new TSerializer(new TBinaryProtocol.Factory());
         final TDeserializer _deserializer = new TDeserializer(new TBinaryProtocol.Factory());
 
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < EXECUTION_COUNT_100000; i++) {
 
             try {
                 final byte[] _bytes = _serializer.serialize(simpleInStruct);
@@ -28,6 +28,6 @@ public class ThriftTest extends PerformanceTestBase
             }
         }
 
-        System.out.println("Thrift-10000 Time = " + (System.currentTimeMillis() - time));
+        System.out.println("Thrift-100000 Time = " + (System.currentTimeMillis() - time));
     }
 }
