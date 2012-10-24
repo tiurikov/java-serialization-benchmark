@@ -20,6 +20,9 @@
                 <groupId>org.apache.thrift.tools</groupId>
                 <artifactId>maven-thrift-plugin</artifactId>
                 <version>0.1.10</version>
+                <configuration>
+                    <thriftExecutable>/usr/local/bin/thrift</thriftExecutable>
+                </configuration>
                 <executions>
                     <execution>
                         <phase>generate-sources</phase>
@@ -36,6 +39,9 @@
         <repository>
             <id>json-io</id>
             <url>http://craigcook.co.uk/artefacts/content/groups/public/</url>
+        </repository>
+
+    </repositories>
     <dependencies>
 
         <dependency>
@@ -81,6 +87,7 @@
             <artifactId>kryo</artifactId>
             <version>2.20</version>
         </dependency>
+        <dependency>
             <groupId>com.cedarsoftware</groupId>
             <artifactId>json-io</artifactId>
             <version>1.0.4</version>
