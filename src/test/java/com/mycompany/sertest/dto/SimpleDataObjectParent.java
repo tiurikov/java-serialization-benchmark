@@ -4,11 +4,13 @@
  */
 package com.mycompany.sertest.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Admin
  */
-public class SimpleDataObjectParent
+public class SimpleDataObjectParent implements Serializable
 {
     private long parentId;
 
