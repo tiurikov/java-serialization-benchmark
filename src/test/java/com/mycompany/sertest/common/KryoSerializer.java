@@ -1,4 +1,4 @@
-package com.mycompany.sertest;
+package com.mycompany.sertest.common;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;

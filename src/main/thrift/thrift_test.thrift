@@ -8,5 +8,6 @@ struct SimpleThriftStructParent {
 struct SimpleThriftStruct {
 	1: required i64 parentId,
 	2: required string message,
-	3: required i64 someId
+        3: required list<string> data,
+	4: required i64 someId
 }

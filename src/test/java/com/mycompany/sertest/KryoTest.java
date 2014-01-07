@@ -1,5 +1,7 @@
 package com.mycompany.sertest;
 
+import com.mycompany.sertest.common.KryoSerializer;
+import com.mycompany.sertest.common.PerformanceTestBase;
 import com.mycompany.sertest.dto.SimpleDataObject;
 
 /**
@@ -9,8 +11,14 @@ import com.mycompany.sertest.dto.SimpleDataObject;
 public class KryoTest extends PerformanceTestBase
 {
     @Override
-    public void transform(SimpleDataObject object)
+    public byte[] serialize(SimpleDataObject object) throws Exception
     {
-        KryoSerializer.read(KryoSerializer.write(object));
+        return KryoSerializer.write(object);
+    }
+
+    @Override
+    public SimpleDataObject deserialize(byte[] data) throws Exception
+    {
+        return (SimpleDataObject) KryoSerializer.read(data);
     }
 }

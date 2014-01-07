@@ -1,5 +1,6 @@
 package com.mycompany.sertest;
 
+import com.mycompany.sertest.common.PerformanceTestBase;
 import com.mycompany.sertest.dto.SimpleDataObject;
 import com.mycompany.sertest.thrift.SimpleThriftStruct;
 import org.apache.thrift.TDeserializer;
@@ -12,11 +13,29 @@ public class ThriftTest extends PerformanceTestBase
     private final TDeserializer deserializer = new TDeserializer(new TBinaryProtocol.Factory());
 
     @Override
-    public void transform(SimpleDataObject object) throws Exception
+    public byte[] serialize(SimpleDataObject object) throws Exception
     {
         final SimpleThriftStruct simpleInStruct =
-                new SimpleThriftStruct(object.getParentId(), object.getMessage(), object.getSomeId());
+                new SimpleThriftStruct(
+                    object.getParentId(),
+                    object.getMessage(),
+                    object.getData(),
+                    object.getSomeId());
 
-        deserializer.deserialize(new SimpleThriftStruct(), serializer.serialize(simpleInStruct));
+        return serializer.serialize(simpleInStruct);
+    }
+
+    @Override
+    public SimpleDataObject deserialize(byte[] data) throws Exception
+    {
+        final SimpleThriftStruct simpleThriftStruct = new SimpleThriftStruct();
+
+        deserializer.deserialize(simpleThriftStruct, data);
+
+        return new SimpleDataObject(
+                simpleThriftStruct.getSomeId(),
+                simpleThriftStruct.getMessage(),
+                simpleThriftStruct.getData(),
+                simpleThriftStruct.getParentId());
     }
 }
