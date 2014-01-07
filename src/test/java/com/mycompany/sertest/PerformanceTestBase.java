@@ -1,6 +1,7 @@
 package com.mycompany.sertest;
 
 import com.mycompany.sertest.dto.SimpleDataObject;
+import org.testng.annotations.Test;
 
 /**
  *
@@ -8,14 +9,26 @@ import com.mycompany.sertest.dto.SimpleDataObject;
  */
 public abstract class PerformanceTestBase
 {
-    protected static final int DUMMY_ID = 12;
+    private static final SimpleDataObject OBJECT_TO_TRANSFORM =
+            new SimpleDataObject(12, "message", new String[]{"mac os", "linux", "windows"}, 34);
 
-    protected static final String DUMMY_MESSAGE = "message";
+    private static final long EXECUTION_COUNT = 500000;
 
-    protected static final String[] DUMMY_DATA = new String[]{"mac os", "linux", "windows"};
+    @Test
+    public void transformTest() throws Exception
+    {
+        final long startTime = System.currentTimeMillis();
 
-    protected static final SimpleDataObject OBJECT_TO_TRANSFORM =
-            new SimpleDataObject(DUMMY_ID, DUMMY_MESSAGE, DUMMY_DATA, DUMMY_ID);
+        for (int i = 0; i < EXECUTION_COUNT; i++) {
+            transform(OBJECT_TO_TRANSFORM);
+        }
 
-    protected static final int EXECUTION_COUNT_100000 = 100000;
+        final long executionTime = System.currentTimeMillis() - startTime;
+        final double processingSpeed = EXECUTION_COUNT / (executionTime / 1000d);
+
+        System.out.printf("%12s Time: %4s, Speed: %8.2f p/sec\n",
+                this.getClass().getSimpleName(), executionTime, processingSpeed);
+    }
+
+    public abstract void transform(SimpleDataObject object) throws Exception;
 }

@@ -2,7 +2,7 @@ package com.mycompany.sertest;
 
 import com.google.gson.Gson;
 import com.mycompany.sertest.dto.SimpleDataObject;
-import org.testng.annotations.Test;
+
 
 /**
  *
@@ -10,17 +10,11 @@ import org.testng.annotations.Test;
  */
 public class GsonTest extends PerformanceTestBase
 {
-    @Test
-    public void gson100000TransformationsRun()
+    private final Gson gson = new Gson();
+
+    @Override
+    public void transform(SimpleDataObject object)
     {
-        final long time = System.currentTimeMillis();
-        final Gson gson = new Gson();
-
-        for (int i = 0; i < EXECUTION_COUNT_100000; i++) {
-            final String json = gson.toJson(OBJECT_TO_TRANSFORM);
-            gson.fromJson(json, SimpleDataObject.class);
-        }
-
-        System.out.println("Gson-100000 Time = " + (System.currentTimeMillis() - time));
+        gson.fromJson(gson.toJson(object), SimpleDataObject.class);
     }
 }
