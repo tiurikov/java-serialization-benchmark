@@ -90,6 +90,11 @@
             <artifactId>boon</artifactId>
             <version>0.4</version>
         </dependency>
+        <dependency>
+            <groupId>org.msgpack</groupId>
+            <artifactId>msgpack</artifactId>
+            <version>0.6.8</version>
+        </dependency>
     </dependencies>
 
     <pluginRepositories>

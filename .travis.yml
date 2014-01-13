@@ -1,7 +1,6 @@
 language: java
 jdk:
   - oraclejdk7
-  - openjdk6
 before_install:
   - sudo add-apt-repository -y ppa:wnoronha/thrift
   - sudo apt-get update -qq
