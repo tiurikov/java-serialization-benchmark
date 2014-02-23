@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.mycompany.sertest;
 
 import com.mycompany.sertest.common.PerformanceTestBase;
@@ -11,8 +5,6 @@ import com.mycompany.sertest.dto.SimpleDataObject;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import javax.xml.bind.*;
-import javax.xml.stream.XMLStreamReader;
-import javax.xml.stream.util.StreamReaderDelegate;
 
 /**
  *
