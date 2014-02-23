@@ -1,11 +1,13 @@
 package com.mycompany.sertest.dto;
 
 import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Admin
  */
+@XmlRootElement
 public class SimpleDataObject extends SimpleDataObjectParent
 {
     private long someId;
