@@ -27,7 +27,7 @@ public abstract class PerformanceTestBase
         final long executionTime = System.currentTimeMillis() - startTime;
         final double processingSpeed = EXECUTION_COUNT / (executionTime / 1000d);
 
-        System.out.printf("Ser:%14s Time: %5s ms, Speed: %8.2f ops/sec, Record Size: %s bytes\n",
+        System.out.printf("Ser:%14s: %5s ms | %10.2f ops/sec | %s bytes\n",
                 this.getClass().getSimpleName(), executionTime, processingSpeed, serialize(OBJECT_TO_TRANSFORM).length);
     }
     
@@ -45,7 +45,7 @@ public abstract class PerformanceTestBase
         final long executionTime = System.currentTimeMillis() - startTime;
         final double processingSpeed = EXECUTION_COUNT / (executionTime / 1000d);
 
-        System.out.printf("Des:%14s Time: %5s ms, Speed: %8.2f ops/sec, Record Size: %s bytes\n",
+        System.out.printf("Des:%14s: %5s ms | %10.2f ops/sec | %s bytes\n",
                 this.getClass().getSimpleName(), executionTime, processingSpeed, serialize(OBJECT_TO_TRANSFORM).length);
     }
 
