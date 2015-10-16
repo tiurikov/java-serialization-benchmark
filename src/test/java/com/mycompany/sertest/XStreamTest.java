@@ -15,7 +15,7 @@ public class XStreamTest extends PerformanceTestBase
     }
 
     @Override
-    public SimpleDataObject deserialize(byte[]  data) throws Exception
+    public SimpleDataObject deserialize(byte[] data) throws Exception
     {
         return (SimpleDataObject) stream.fromXML(new String(data));
     }

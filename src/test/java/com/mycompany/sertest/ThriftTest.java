@@ -15,12 +15,12 @@ public class ThriftTest extends PerformanceTestBase
     @Override
     public byte[] serialize(SimpleDataObject object) throws Exception
     {
-        final SimpleThriftStruct simpleInStruct =
-                new SimpleThriftStruct(
-                    object.getParentId(),
-                    object.getMessage(),
-                    object.getData(),
-                    object.getSomeId());
+        final SimpleThriftStruct simpleInStruct
+                = new SimpleThriftStruct(
+                        object.getParentId(),
+                        object.getMessage(),
+                        object.getData(),
+                        object.getSomeId());
 
         return serializer.serialize(simpleInStruct);
     }
